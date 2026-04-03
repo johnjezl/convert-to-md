@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "convert-to-md"
+version = "0.1.0"
+description = "Convert .docx and .pdf files to Markdown with image extraction"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = ["markdown", "docx", "pdf", "converter"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Markup :: Markdown",
+]
+dependencies = [
+    "mammoth>=1.8.0",
+    "markdownify>=0.13.0",
+    "pymupdf4llm>=0.0.17",
+]
+
+[project.scripts]
+convert-to-md = "convert_to_md.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "python-docx>=1.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
